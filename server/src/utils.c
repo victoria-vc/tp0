@@ -22,7 +22,7 @@ int iniciar_servidor(void)
 	socket_servidor = socket(servinfo->ai_family, servinfo->ai_socktype, servinfo->ai_protocol);
 	
 	// Asociamos el socket a un puerto
-	bind(socket_servidor, servinfo-ai_addr, servinfo->ai_addrlen);
+	bind(socket_servidor, servinfo->ai_addr, servinfo->ai_addrlen);
 	
 	// Escuchamos las conexiones entrantes
 	listen(socket_servidor, SOMAXCONN);
