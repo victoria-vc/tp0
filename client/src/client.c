@@ -49,6 +49,7 @@ int main(void)
 
 	// Enviamos al servidor el valor de CLAVE como mensaje
 	enviar_mensaje(valor, conexion);
+	
 	// Armamos y enviamos el paquete
 	paquete(conexion);
 
@@ -121,14 +122,16 @@ void paquete(int conexion)
 		leido = readline("> ");
 	}
 
-	// Enviar paquete
-	enviar_paquete(paquete, conexion);
 
-	// Eliminar paquete
-	eliminar_paquete(paquete);
 
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	free(leido);
+
+	// Enviar paquete
+	enviar_paquete(paquete, conexion);
+	
+	// Eliminar paquete
+	eliminar_paquete(paquete);
 }
 
 void terminar_programa(int conexion, t_log* logger, t_config* config)
