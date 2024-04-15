@@ -64,7 +64,7 @@ int main(void)
 	{
 		log_error(logger, "Handshake error");
 		exit(1);
-	}
+	} 
 	
 	// Armamos y enviamos el paquete
 
@@ -114,7 +114,7 @@ void leer_consola(t_log *logger)
 	leido = readline("> ");
 	// El resto, las vamos leyendo y logueando hasta recibir un string vacío
 	
-	while(strlen(leido) > 0)
+	while(strcmp(leido, "") != 0)
 	{
 		log_info(logger, "%s", leido);
 		free(leido);
@@ -132,15 +132,11 @@ void paquete(int socket_cliente)
 {
 	// Ahora toca lo divertido!
 	char *leido;
-	t_paquete *paquete;
-	{
-		char *leido;
-		t_paquete *paquete;
-		paquete = crear_paquete();
-		leido = readline("> ");
-
+	t_paquete *paquete = crear_paquete();
+	
 	    // Leemos y esta vez agregamos las lineas al paquete
-		while(strlen(leido) > 0)
+		leido = readline("> ");
+		while(strcmp(leido,""))
 		{
 			agregar_a_paquete(paquete, leido, strlen(leido) + 1); 
 			free(leido);
@@ -149,15 +145,13 @@ void paquete(int socket_cliente)
 
 	// enviamos
 		enviar_paquete(paquete, socket_cliente);
-	// eliminamos
-
-		eliminar_paquete(paquete);
 	
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	free(leido);
+	eliminar_paquete(paquete);
 
 	
-	}
+	
 
 }
 

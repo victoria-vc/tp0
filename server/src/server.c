@@ -25,7 +25,7 @@ int main(void) {
 		send(cliente_fd, &resultError, sizeof(uint32_t), 0);
 		log_error(logger, "Handshake error");
 		exit(1);
-	}
+	} 
 	t_list* lista;
 	while (1) {
 		int cod_op = recibir_operacion(cliente_fd);
