@@ -125,10 +125,10 @@ void leer_consola(t_log *logger)
 	// ¡No te olvides de liberar las lineas antes de regresar!
 	free(leido);
 
-	leido = NULL;
+	
 }
 
-void paquete(int socket_cliente)
+void paquete(int conexion)
 {
 	// Ahora toca lo divertido!
 	char *leido;
@@ -144,7 +144,7 @@ void paquete(int socket_cliente)
 		}
 
 	// enviamos
-		enviar_paquete(paquete, socket_cliente);
+		enviar_paquete(paquete, conexion);
 	
 	// ¡No te olvides de liberar las líneas y el paquete antes de regresar!
 	free(leido);
